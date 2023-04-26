@@ -164,7 +164,9 @@ router.delete("/posts/:postId", authMiddleware, async (req, res) => {
 
     await Posts.destroy({ where: { postId: postId } }).catch((err) => {
       console.log(err);
-      res.status(401).json({ errorMessage: "에러메세지" });
+      res
+        .status(401)
+        .json({ errorMessage: "게시글이 정상적으로 삭제되지 않았습니다." });
     });
 
     res
